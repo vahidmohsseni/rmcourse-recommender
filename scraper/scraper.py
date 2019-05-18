@@ -76,6 +76,7 @@ def get_questions_links():
                             if 'user' in kk['href']:
                                 user_link = kk['href']
                                 user_stack_id = user_link.split('/')[2]  # returns user id
+                                sleep(0.25)
                                 raw_3 = simple_get(parent_url + user_link + "?tab=tags&sort=votes")
                                 bs3 = BeautifulSoup(raw_3, 'html.parser')
                                 u_raw_tags = bs3.find('div', {'class': 'user-tab-content'})
