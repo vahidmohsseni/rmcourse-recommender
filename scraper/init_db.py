@@ -1,7 +1,9 @@
 import sqlite3
+import os
 
 
 def init_database():
+    os.remove("../database/db")
     with sqlite3.connect("../database/db") as conn:
         conn.execute('''CREATE TABLE questions
                      (id integer PRIMARY KEY Autoincrement,

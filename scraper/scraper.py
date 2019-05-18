@@ -48,14 +48,16 @@ def log_error(e):
 def get_questions_links():
     p_link = "https://stackoverflow.com/questions?sort=frequent&page={0}"
     parent_url = "https://stackoverflow.com"
-    for i in range(1, 2):
+    for i in range(1, 10):
+        print("link no: ", i)
         raw = simple_get(p_link.format(i))
         bs = BeautifulSoup(raw, 'html.parser')
         q_sum = bs.findAll("div", {"class": "question-summary"})
-        for j in q_sum[:3]:
+        for j in q_sum:
             link = j.find("a", {'class': 'question-hyperlink'})['href']
             acc = j.find('div', {'class': 'status answered-accepted'})
             if acc is not None:
+                print("question: ", j)
                 raw_2 = simple_get(parent_url + link)
                 bs2 = BeautifulSoup(raw_2, 'html.parser')
                 q_id = link.split('/')[2]  # returns question id
