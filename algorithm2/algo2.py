@@ -53,38 +53,43 @@ def get_all_workers():
     return workers
 
 
-def dist(wi, pj):
-    pj_tags = len(pj.tags)
-    worker_tags = set(wi.tags.keys())
-    inter = worker_tags & pj.tags
-    count = len(inter)
-    d = 1 - count / pj_tags
-    return d
-
-
-def argmin(lst, key=None):
+def argmax(lst, key=None):
     index = 0
     val = lst[0] if key is None else key(lst[0])
     for i, v in enumerate(lst):
         if key is not None:
             v = key(v)
-        if v < val:
+        if v > val:
             index = i
             val = v
     return val, index
 
 
-def algorithm1(p, w, k):
+def create_bipartite_graph(w):
+    graph = dict()
+    for wi in w:
+        for tag, val in wi.tags.items():
+            workers = graph.setdefault(tag, list())
+            workers.append((wi, val))
+    return graph
+
+
+def algorithm2(p, w, k):
     result = []
+    specialty_graph = create_bipartite_graph(w)
     for pj in p:
-        d = []
-        for wi in w:
-            d.append((wi, dist(wi, pj)))
+        score_table = dict()
+        for tl in pj.tags:
+            if tl not in specialty_graph:
+                continue
+            for wi, s in specialty_graph[tl]:
+                score_table[wi.id] = score_table.get(wi.id, 0) + s
         w2 = []
+        items = list(score_table.items())
         for i in range(k):
-            _, best_index = argmin(d, key=lambda x: x[1])
-            w2.append(d[best_index][0])
-            d.pop(best_index)
+            _, best_index = argmax(items, key=lambda x: x[1])
+            w2.append(items[best_index][0])
+            items.pop(best_index)
         result.append(w2)
     return result
 
@@ -108,10 +113,11 @@ def main():
         end = start + h
         p = get_problems(start, end)
         # size_p = len(p)
-        result, duration = time_it(algorithm1, p, w, k)
+        result, duration = time_it(algorithm2, p, w, k)
         avg += duration
     avg /= z
     print(avg)
+
 
 if __name__ == '__main__':
     main()
