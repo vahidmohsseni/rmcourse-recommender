@@ -121,6 +121,8 @@ def increase_k():
         avg_duration = latency(k, 50)
         x.append(k)
         y.append(avg_duration)
+    with open('./algo1_diff_k.txt', 'w') as out:
+        out.write(f'{str(x)}\n{str(y)}')
     f = plt.figure()
     plt.plot(x, y)
     plt.show()
@@ -132,7 +134,7 @@ def different_p():
     r = 5
     x = []
     y = []
-    for i in range(10, 60):
+    for i in range(10, 50):
         print(i)
         avg  = 0
         for j in range(r):
@@ -140,6 +142,8 @@ def different_p():
         avg /= r
         x.append(i)
         y.append(avg)
+    with open('./algo1_diff_p.txt', 'w') as out:
+        out.write(f'{str(x)}\n{str(y)}')
     f = plt.figure()
     plt.xlabel('problem set size')
     plt.ylabel('seconds')
@@ -148,5 +152,4 @@ def different_p():
 
 
 if __name__ == '__main__':
-    different_p()
-
+    increase_k()

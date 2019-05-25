@@ -132,6 +132,8 @@ def increase_k():
         avg_duration /= r
         x.append(k)
         y.append(avg_duration)
+    with open('./algo2_diff_k.txt', 'w') as out:
+        out.write(f'{str(x)}\n{str(y)}')
     f = plt.figure()
     plt.plot(x, y)
     plt.show()
@@ -151,6 +153,8 @@ def different_p():
         avg /= r
         x.append(i)
         y.append(avg)
+    with open('./algo2_diff_p.txt', 'w') as out:
+        out.write(f'{str(x)}\n{str(y)}')
     f = plt.figure()
     plt.xlabel('problem set size')
     plt.ylabel('seconds')
@@ -159,4 +163,4 @@ def different_p():
 
 
 if __name__ == '__main__':
-    different_p()
+    increase_k()
