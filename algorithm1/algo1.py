@@ -96,10 +96,8 @@ def time_it(func, *args, **kwargs):
     duration = end - start
     return r, duration
 
-def main():
+def latency(k, h):
     z = 10
-    h = 50
-    k = 5
     w = get_all_workers()
     # size_w = len(w)
     avg = 0
@@ -111,7 +109,44 @@ def main():
         result, duration = time_it(algorithm1, p, w, k)
         avg += duration
     avg /= z
-    print(avg)
+    return avg
+
+
+def increase_k():
+    from matplotlib import pyplot as plt
+    y = []
+    x = []
+    for k in range(1, 50):
+        print(k)
+        avg_duration = latency(k, 50)
+        x.append(k)
+        y.append(avg_duration)
+    f = plt.figure()
+    plt.plot(x, y)
+    plt.show()
+
+
+def different_p():
+    from matplotlib import pyplot as plt
+    k = 5
+    r = 5
+    x = []
+    y = []
+    for i in range(10, 60):
+        print(i)
+        avg  = 0
+        for j in range(r):
+            avg += latency(k, i)
+        avg /= r
+        x.append(i)
+        y.append(avg)
+    f = plt.figure()
+    plt.xlabel('problem set size')
+    plt.ylabel('seconds')
+    plt.plot(x, y)
+    plt.show()
+
 
 if __name__ == '__main__':
-    main()
+    different_p()
+
