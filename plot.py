@@ -11,13 +11,13 @@ def get_data(addr):
 
 
 sns.set()
-plt.xlabel('different k value')
+plt.xlabel('Problem set size')
 plt.ylabel('seconds')
-x, y = get_data('./algorithm1/algo1_diff_k.txt')
+x, y = get_data('./algorithm1/algo1_diff_p.txt')
 #data = pnd.DataFrame(data=[x, y],index=['x', 'y']).T
 #vis = sns.relplot(x='x', y='y', data=data, kind='line')
 plt.plot(x, y,label='algorithm1')
-x, y = get_data('./algorithm2/algo2_diff_k.txt')
+x, y = get_data('./algorithm2/algo2_diff_p.txt')
 plt.plot(x, y, label='algorithm2')
 plt.legend()
 plt.show()

@@ -99,8 +99,9 @@ problems to be answered.
 The rest of the paper is structured in the following manner.
 Section \ref{sec:prblm-def} defines the problem being examined in this 
 paper in a formal language. Section \ref{sec:algo-one} suggests the first algorithm.
-Algorith two is discussed in \ref{sec:algo-two}. Section \ref{sec:eval} and \ref{sec:conclusion}
-are evaluation and conclusion respectively.
+Algorithm two is discussed in \ref{sec:algo-two}. 
+Section \ref{sec:eval} presents evaluation of our works. 
+Section \ref{sec:f-work} and \ref{sec:conclusion} are future work and conclusion respectively.
 
 The implemented algorithms and dataset used for this paper is available online
 \footnote{Github repository: \url{https://github.com/vahidmohsseni/rmcourse-recommender}}.
@@ -149,7 +150,7 @@ Distance between a worker and a problem is defined as formula \ref{f:dist}.
 Algorithm \ref{algo:algorithm1} demonstrates this algorithm with its details.
 
 \begin{algorithm}
-        \caption{This is the first algo}
+        \caption{This is the first algorithm}
         \label{algo:algorithm1}
         \begin{algorithmic}[1]
                 \REQUIRE 
@@ -296,11 +297,11 @@ The evaluation of this work has been carried out on data gathered from StackOver
 This data was collected using a crawler script which was used to extract data about problems
 and users. The gathered data is comprised of problems id and their correlated tags and users id along
 with all the tags a user has been associated with. All of the tags related to a user has a socre value.
-These data are stored in sqlite file in order to easy access.
+These data are stored in a sqlite file in order to be accessed easily.
 
 \subsection{Results}
 As it is shown in figure \ref{fig:latency_eval}, the time needed for algorithm two to prepare 
-an answer is reduced to less than one third of the time needed for algorithm one.
+an answer is reduced to less than one third of the algorithm one.
 
 The values presented in figure \ref{fig:latency_eval} are average of latencies measured during testing.
 The problems from dataset was splitted to different sets and along with the set of all users where 
@@ -325,7 +326,7 @@ to \(k\).
     %    \includegraphics[width=\linewidth]{./images/algo2_diff_k.png}
     %    \caption{Algorithm two}
     %\end{subfigure}
-    \includegraphics[width=\linewidth]{./images/algo1_algo2_diff_k.png}
+    \includegraphics[width=\linewidth]{./images/algo1_algo2_diff_k_sns.png}
     \caption{Clock time duration with different \(k\) values for problem sets of size 50}
     \label{fig:k-comparison}
 \end{figure} 
@@ -345,7 +346,7 @@ statements in sections \ref{sec:algo-one} and \ref{sec:algo-two}.
     %    \includegraphics[width=\linewidth]{./images/algo2_diff_p.png}
     %    \caption{Algorithm two}
     %\end{subfigure}
-    \includegraphics[width=\linewidth]{./images/algo1_algo2_diff_p.png}
+    \includegraphics[width=\linewidth]{./images/algo1_algo2_diff_p_sns.png}
     \caption{Clock time duration with different \(\lVert P \rVert\) and \(k=5\)}
     \label{fig:p-comparison}
 \end{figure}
@@ -353,11 +354,10 @@ statements in sections \ref{sec:algo-one} and \ref{sec:algo-two}.
 
 \section{Future Works}
 \label{sec:f-work}
-In future work, we consider examining the effectiveness of our method. We believe algorithm 
-two is more effective than the one but we don't have such a mechanism to evaluate this 
-impression. Also, we are thinking about new intelligent methods e.g. machine learning 
-techniques to solve the problem and compare them with these algorithm based methods. 
-The results might be surprising if we evaluate these methods.
+In future works, we consider examining the effectiveness of our method. We believe algorithm 
+two is more effective than the algorithm one but we do not have such a mechanism to evaluate this 
+impression yet. Also, we are thinking about new intelligent methods such as machine learning 
+techniques for solving this problem and compare them with these algorithms propused in this paper. 
 
 
 \section{Conclusion}
@@ -365,7 +365,7 @@ The results might be surprising if we evaluate these methods.
 Crowd sourcing is a distributed approach in solving problems. It aims to reduce cost.
 For this system to perform efficiently, it is crucial to have a recommendation system
 to offer tasks to relevant workers.
-In this paper two algorithms are proposed for find a subset of workers \(W'\) who
+In this paper two algorithms are proposed for finding a subset of workers \(W'\) who
 are relevant to a given problem \(p_j\). Both of these algorithms are analysed carefully.
 At the end these two algorithms are evaluated on a dataset gathered from StackOverFlow 
 Q\&A service.
