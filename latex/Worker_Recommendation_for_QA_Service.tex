@@ -128,6 +128,8 @@ The intuition behind this algorithm is to identify an approach for measuring clo
 a worker and a given problem. Furthermore this measure of relevance is used to discover workers
 who are more related to the given problem. It is supposed that a worker who is considered close
 the probelm is enthusiasm of the problem topic and would be able to produce a valid answer for it.
+We tried to keep this algorithm as naive as possible. So, the proposed algorithm is simple to trace 
+and debug and we are sure that this algorithm is pretty correct and is trustable in results. 
 
 In the continue the algorithm is
 examined and its complexity, from both time and memory aspect, is analyzed.
@@ -206,6 +208,8 @@ array for each problem is very sparse. Concluding from this observation, if an a
 the relevant group of workers for a given problem is used for filtering the workeres the time complexity
 would be decreased. The result of this decrease in time complexity is proportional to the complexity of 
 the filtering approach.
+Algorithm two in contrast with algorithm one uses a structured body to solve the problem. This structure 
+helps the algorithm two in efficiency which is obvious as mentioned in the next sections.
 
 \subsection{Description}
 For improving the time complexity of algorithm one, this algorithm first choses a subset of \(W\).
@@ -287,11 +291,14 @@ solving the problem specified in section \ref{sec:prblm-def}.
 
 \section{Evaluation}
 \label{sec:eval}
+\subsection{Data Collection}
 The evaluation of this work has been carried out on data gathered from StackOverFlow website.
 This data was collected using a crawler script which was used to extract data about problems
 and users. The gathered data is comprised of problems id and their correlated tags and users id along
 with all the tags a user has been associated with. All of the tags related to a user has a socre value.
+These data are stored in sqlite file in order to easy access.
 
+\subsection{Results}
 As it is shown in figure \ref{fig:latency_eval}, the time needed for algorithm two to prepare 
 an answer is reduced to less than one third of the time needed for algorithm one.
 
@@ -342,6 +349,15 @@ statements in sections \ref{sec:algo-one} and \ref{sec:algo-two}.
     \caption{Clock time duration with different \(\lVert P \rVert\) and \(k=5\)}
     \label{fig:p-comparison}
 \end{figure}
+
+
+\section{Future Works}
+\label{sec:f-work}
+In future work, we consider examining the effectiveness of our method. We believe algorithm 
+two is more effective than the one but we don't have such a mechanism to evaluate this 
+impression. Also, we are thinking about new intelligent methods e.g. machine learning 
+techniques to solve the problem and compare them with these algorithm based methods. 
+The results might be surprising if we evaluate these methods.
 
 
 \section{Conclusion}
